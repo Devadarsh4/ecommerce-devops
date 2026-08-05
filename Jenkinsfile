@@ -7,6 +7,12 @@ pipeline {
         BUILD_TAG = "${BUILD_NUMBER}"
         KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
+	
+    triggers {
+        githubPush()
+     } 
+
+
 
     stages {
         stage('Checkout') {
