@@ -3,102 +3,515 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaCart X</title>
+<title>India's Best Private University in Punjab - LPU</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#eef3f9;color:#222}
-header{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:#111827;color:#fff;position:sticky;top:0}
-.logo{display:flex;align-items:center;gap:10px;font-size:30px;font-weight:bold;color:#4ade80}
-.logo img{width:42px}
-nav a{text-decoration:none;color:#fff;margin:0 10px}
-.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:60px 5%;background:linear-gradient(135deg,#2563eb,#06b6d4);color:#fff}
-.hero img{width:100%;max-width:500px}
-.btn{background:#22c55e;color:#fff;padding:12px 24px;border-radius:30px;text-decoration:none}
-.icons{display:grid;grid-template-columns:repeat(6,1fr);gap:15px;padding:25px 5%}
-.icon{background:#fff;padding:20px;border-radius:15px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.icon img{width:60px}
-.products{padding:40px 5%}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:#fff;padding:20px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.1);text-align:center;transition:.3s}
-.card:hover{transform:translateY(-8px)}
-.card img{height:140px;object-fit:contain}
-button{padding:10px 15px;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer}
-#login{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5)}
-.modal{background:#fff;width:320px;margin:100px auto;padding:25px;border-radius:12px}
-.modal input{width:100%;padding:10px;margin:10px 0}
-footer{background:#111827;color:#ddd;text-align:center;padding:30px;margin-top:40px}
-@media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}.icons{grid-template-columns:repeat(3,1fr)}}
+  :root{
+    --maroon:#7a1024;
+    --maroon-dark:#54081a;
+    --gold:#c9a24b;
+    --cream:#faf7f2;
+    --ink:#1c1414;
+    --grey:#6b6260;
+    --line:#e9e1d8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Georgia', 'Times New Roman', serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.5;
+  }
+  h1,h2,h3,h4{
+    font-family:'Georgia', serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{list-style:none;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:12px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:10px;
+    display:block;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--maroon);color:#fff;
+    padding:13px 26px;border-radius:2px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+    font-weight:700;border:1px solid var(--maroon);
+    transition:.25s;cursor:pointer;
+  }
+  .btn:hover{background:var(--maroon-dark);border-color:var(--maroon-dark);}
+  .btn.outline{background:transparent;color:var(--maroon);}
+  .btn.outline:hover{background:var(--maroon);color:#fff;}
+
+  /* Top notice bar */
+  .notice-bar{
+    background:var(--maroon-dark);color:#f4e9dc;
+    text-align:center;font-family:Arial,sans-serif;
+    font-size:13px;padding:8px 20px;
+  }
+  .notice-bar a{color:var(--gold);font-weight:700;text-decoration:underline;}
+
+  /* Utility top nav */
+  .util-nav{
+    background:var(--ink);
+    font-family:Arial,Helvetica,sans-serif;
+  }
+  .util-nav ul{
+    display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0;
+    max-width:1200px;margin:0 auto;padding:0 24px;
+  }
+  .util-nav a{
+    display:block;padding:9px 14px;font-size:11px;letter-spacing:.06em;
+    color:#cfc4bb;text-transform:uppercase;border-left:1px solid #33292a;
+  }
+  .util-nav a:hover{color:var(--gold);}
+
+  /* Main header */
+  header.main{
+    background:#fff;border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+  }
+  .main-row{
+    max-width:1200px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;gap:28px;justify-content:space-between;
+  }
+  .logo{
+    font-family:Georgia,serif;font-weight:800;font-size:26px;color:var(--maroon);
+    display:flex;align-items:center;gap:10px;letter-spacing:-.02em;white-space:nowrap;
+  }
+  .logo .mark{
+    width:40px;height:40px;border-radius:50%;
+    background:conic-gradient(from 210deg, var(--maroon), var(--gold), var(--maroon));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:14px;font-weight:900;font-family:Arial;
+  }
+  nav.primary{flex:1;}
+  nav.primary ul{display:flex;justify-content:center;gap:2px;flex-wrap:wrap;}
+  nav.primary > ul > li{position:relative;}
+  nav.primary > ul > li > a{
+    display:block;padding:10px 16px;font-family:Arial,Helvetica,sans-serif;
+    font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--ink);border-bottom:3px solid transparent;
+  }
+  nav.primary > ul > li:hover > a{color:var(--maroon);border-color:var(--gold);}
+  .header-actions{display:flex;align-items:center;gap:14px;}
+  .icon-btn{
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--maroon);
+    font-size:16px;cursor:pointer;
+  }
+  .header-actions .btn{padding:11px 22px;font-size:12px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:24px;height:2px;background:var(--ink);}
+
+  @media(max-width:980px){
+    nav.primary{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;min-height:560px;display:flex;align-items:center;
+    background:
+      linear-gradient(120deg, rgba(84,8,26,.92) 0%, rgba(122,16,36,.78) 45%, rgba(122,16,36,.35) 100%),
+      repeating-linear-gradient(115deg, #7a1024 0 2px, #6b0e20 2px 90px);
+    color:#fff;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-10%;top:-20%;width:60%;height:140%;
+    background:radial-gradient(circle at center, rgba(201,162,75,.35), transparent 60%);
+  }
+  .hero-content{max-width:640px;padding:90px 24px;position:relative;z-index:2;}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);line-height:1.08;margin-bottom:20px;}
+  .hero h1 em{font-style:normal;color:var(--gold);}
+  .hero p{font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#f1e3d5;max-width:520px;margin-bottom:32px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+  .hero-stats{display:flex;gap:36px;flex-wrap:wrap;font-family:Arial,sans-serif;}
+  .hero-stats div{border-left:2px solid var(--gold);padding-left:14px;}
+  .hero-stats strong{display:block;font-family:Georgia,serif;font-size:26px;color:#fff;}
+  .hero-stats span{font-size:12px;color:#e3d2c1;text-transform:uppercase;letter-spacing:.05em;}
+
+  /* SECTION HEADERS */
+  section{padding:80px 0;}
+  .sec-head{max-width:680px;margin-bottom:48px;}
+  .sec-head h2{font-size:clamp(26px,3vw,38px);line-height:1.18;}
+  .sec-head p{font-family:Arial,sans-serif;color:var(--grey);margin-top:14px;font-size:15px;}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+
+  /* RANKINGS */
+  .rankings{background:#fff;}
+  .rank-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .rank-card{background:#fff;padding:34px 26px;}
+  .rank-card .num{font-size:44px;color:var(--maroon);font-weight:800;line-height:1;}
+  .rank-card .num sup{font-size:18px;top:-1.2em;}
+  .rank-card p{font-family:Arial,sans-serif;font-size:13.5px;color:var(--grey);margin-top:12px;}
+  @media(max-width:820px){.rank-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* HIGHLIGHTS */
+  .highlights{
+    background:var(--ink);color:#fff;
+  }
+  .highlights .eyebrow{color:var(--gold);}
+  .highlights .sec-head h2{color:#fff;}
+  .highlight-scroll{
+    display:flex;gap:20px;overflow-x:auto;padding-bottom:10px;
+    scroll-snap-type:x mandatory;
+  }
+  .h-card{
+    flex:0 0 320px;scroll-snap-align:start;
+    background:#241a1c;border:1px solid #3a2c2c;border-radius:6px;overflow:hidden;
+  }
+  .h-card .img{
+    height:190px;
+    background:linear-gradient(135deg,#8a1b30,#3d0b16);
+    display:flex;align-items:center;justify-content:center;
+    font-family:Arial;font-size:12px;color:#e6c9c9;text-align:center;padding:10px;
+  }
+  .h-card .body{padding:18px 20px;font-family:Arial,sans-serif;}
+  .h-card .body h4{font-family:Georgia,serif;font-size:16px;margin-bottom:8px;color:#f6ecdc;}
+  .h-card .body p{font-size:13px;color:#c8bdb6;line-height:1.6;}
+
+  /* PLACEMENTS */
+  .placements{background:var(--cream);}
+  .place-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:56px;}
+  .place-stats div{border-top:3px solid var(--maroon);padding-top:16px;}
+  .place-stats strong{display:block;font-size:32px;color:var(--maroon);}
+  .place-stats span{font-family:Arial,sans-serif;font-size:13px;color:var(--grey);}
+  .logo-row{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);
+  }
+  .logo-row div{
+    background:#fff;height:90px;display:flex;align-items:center;justify-content:center;
+    font-family:Arial;font-weight:700;color:#8a827c;font-size:14px;letter-spacing:.02em;
+  }
+  @media(max-width:820px){.place-stats{grid-template-columns:repeat(2,1fr);}.logo-row{grid-template-columns:repeat(3,1fr);}}
+
+  /* PROGRAMMES */
+  .programmes{background:#fff;}
+  .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .prog-card{
+    border:1px solid var(--line);padding:26px 24px;border-radius:4px;
+    transition:.25s; display:flex;justify-content:space-between;align-items:center;
+  }
+  .prog-card:hover{border-color:var(--maroon);background:#fffaf4;}
+  .prog-card span{font-family:Arial,sans-serif;font-weight:700;font-size:14.5px;}
+  .prog-card .arrow{color:var(--maroon);font-size:18px;}
+  @media(max-width:820px){.prog-grid{grid-template-columns:1fr;}}
+
+  /* VISITORS */
+  .visitors{background:var(--cream);}
+  .vis-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;}
+  .vis-card{text-align:center;}
+  .vis-avatar{
+    width:88px;height:88px;border-radius:50%;margin:0 auto 14px;
+    background:linear-gradient(135deg,#c9a24b,#7a1024);
+  }
+  .vis-card h4{font-size:14.5px;margin-bottom:4px;}
+  .vis-card p{font-family:Arial,sans-serif;font-size:12px;color:var(--grey);}
+  @media(max-width:900px){.vis-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* TESTIMONIAL */
+  .testimonial{background:var(--maroon);color:#fff;}
+  .testimonial .eyebrow{color:var(--gold);}
+  .test-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:center;}
+  .test-photo{
+    height:340px;border-radius:6px;
+    background:linear-gradient(160deg,#c9a24b,#54081a);
+  }
+  .test-quote{font-size:22px;line-height:1.5;font-style:italic;margin-bottom:26px;}
+  .test-name{font-family:Arial,sans-serif;font-weight:700;font-size:15px;}
+  .test-role{font-family:Arial,sans-serif;font-size:13px;color:#e3c9c9;}
+  @media(max-width:820px){.test-wrap{grid-template-columns:1fr;}.test-photo{height:220px;}}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#cbbfb7;padding:70px 0 0;font-family:Arial,sans-serif;}
+  .foot-top{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:32px;padding-bottom:50px;border-bottom:1px solid #33292a;}
+  .foot-top h5{color:#fff;font-family:Georgia,serif;font-size:15px;margin-bottom:18px;}
+  .foot-top ul li{margin-bottom:10px;font-size:13px;}
+  .foot-top ul li a:hover{color:var(--gold);}
+  .foot-logo{font-family:Georgia,serif;color:#fff;font-size:22px;font-weight:800;margin-bottom:14px;}
+  .foot-addr p{font-size:13px;line-height:1.7;margin-bottom:14px;}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    padding:24px 0;font-size:12px;color:#8a8079;
+  }
+  .socials{display:flex;gap:10px;}
+  .socials a{
+    width:32px;height:32px;border:1px solid #46383a;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:12px;color:#cbbfb7;
+  }
+  .socials a:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+  @media(max-width:900px){.foot-top{grid-template-columns:1fr 1fr;}}
+
+  /* Sticky side actions */
+  .sticky-actions{
+    position:fixed;right:16px;bottom:16px;z-index:60;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .sticky-actions a{
+    background:var(--maroon);color:#fff;font-family:Arial,sans-serif;font-size:12px;font-weight:700;
+    padding:10px 16px;border-radius:24px;box-shadow:0 6px 18px rgba(0,0,0,.25);
+    display:flex;align-items:center;gap:8px;
+  }
+  .sticky-actions a.whatsapp{background:#25D366;}
 </style>
 </head>
 <body>
-<header>
-<div class="logo"><img src="https://cdn-icons-png.flaticon.com/512/891/891462.png">NovaCart X</div>
-<nav>
-<a href="#"> Home</a>
-<a href="#">🛍 Products</a>
-<a href="#"> Deals</a>
-<a href="#" onclick="openLogin()">👤 Login</a>
-<a href="#">🛒 Caart <span id="count">0</span></a>
-</nav>
+
+<div class="notice-bar">Applications for LPUNEST 2026 are now Open. <a href="#">Apply Now →</a></div>
+
+<div class="util-nav">
+  <ul>
+    <li><a href="#">Jobs</a></li>
+    <li><a href="#">Happenings</a></li>
+    <li><a href="#">Freshmen Induction</a></li>
+    <li><a href="#">Study Abroad</a></li>
+    <li><a href="#">LPUNEST</a></li>
+    <li><a href="#">International Admissions</a></li>
+    <li><a href="#">Online Education</a></li>
+    <li><a href="#">Distance Education</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+<header class="main">
+  <div class="main-row">
+    <a href="#" class="logo"><span class="mark">LPU</span> Lovely Professional University</a>
+    <nav class="primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#campus">Campus Life</a></li>
+        <li><a href="#placements">Placements</a></li>
+        <li><a href="#research">Research</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="icon-btn">⚲</div>
+      <a href="#" class="btn">Apply Now →</a>
+    </div>
+    <div class="burger"><span></span><span></span><span></span></div>
+  </div>
 </header>
 
-<section class="hero">
-<div>
-<h1>🚀 Future of Shopping</h1>
-<p>Beautiful static e-commerce website for DevOps deployment.</p><br>
-<a class="btn" href="#shop">Shop Now</a>
-</div>
-<img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
+<section class="hero" id="about">
+  <div class="hero-content">
+    <span class="eyebrow">NAAC A++ Accredited · UGC Recognised</span>
+    <h1>India's <em>Best Private University</em> in Punjab</h1>
+    <p>LPU ranks 31st among all government and private universities in India according to the NIRF Rankings 2025 — offering diploma, undergraduate, postgraduate and doctoral programmes across 25+ disciplines.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn">Apply Now →</a>
+      <a href="#programmes" class="btn outline" style="background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.4);">Explore Programmes</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>30,000+</strong><span>Students</span></div>
+      <div><strong>2000+</strong><span>Recruiters</span></div>
+      <div><strong>600+</strong><span>Programmes</span></div>
+      <div><strong>60+</strong><span>Countries</span></div>
+    </div>
+  </div>
 </section>
 
-<div class="icons">
-<div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"><p>Fashion</p></div>
-<div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/1042/1042390.png"><p>Camera</p></div>
-<div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920321.png"><p>Watch</p></div>
-<div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/179/179386.png"><p>Laptop</p></div>
-<div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/2589/2589903.png"><p>Shoes</p></div>
-<div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/15/15874.png"><p>Phone</p></div>
-</div>
-
-<section class="products" id="shop">
-<h2>🔥 Trending Products</h2><br>
-<div class="grid" id="grid"></div>
+<section class="rankings">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Rankings</span>
+      <h2>Rising Beyond Standards: Our Journey of Recognition &amp; Achievement</h2>
+      <p>LPU is recognised by the University Grants Commission (UGC) and accredited with an A++ grade by NAAC, with consistent recognition across prestigious national and global rankings.</p>
+    </div>
+    <div class="rank-grid">
+      <div class="rank-card">
+        <div class="num">4<sup>th</sup></div>
+        <p>Among all government and private universities in India — WURI Rankings</p>
+      </div>
+      <div class="rank-card">
+        <div class="num">5<sup>th</sup></div>
+        <p>Among top universities of India — The World University Rankings 2026</p>
+      </div>
+      <div class="rank-card">
+        <div class="num">31<sup>st</sup></div>
+        <p>Among all government &amp; private universities — NIRF Ranking 2025</p>
+      </div>
+      <div class="rank-card">
+        <div class="num">2<sup>nd</sup></div>
+        <p>Among all government &amp; private universities — Impact Rankings 2025</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div id="login">
-<div class="modal">
-<h2>👤 Login</h2>
-<input placeholder="Email">
-<input type="password" placeholder="Password">
-<button onclick="alert('Demo Login Successful');closeLogin()">Login</button>
-<button onclick="closeLogin()">Close</button>
-</div>
-</div>
+<section class="highlights">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Highlights</span>
+      <h2>United in Vision. Unmatched in Excellence.</h2>
+    </div>
+    <div class="highlight-scroll">
+      <div class="h-card">
+        <div class="img">UGC Graded Autonomy</div>
+        <div class="body"><h4>Graded Autonomy Status</h4><p>UGC recognizes LPU with prestigious Graded Autonomy status, reflecting institutional excellence.</p></div>
+      </div>
+      <div class="h-card">
+        <div class="img">Chancellor with PM Modi</div>
+        <div class="body"><h4>A Valuable Discussion</h4><p>LPU's Chancellor met with the Honourable Prime Minister of India, Shri Narendra Modi.</p></div>
+      </div>
+      <div class="h-card">
+        <div class="img">NIRF Ranking</div>
+        <div class="body"><h4>NIRF 2025 Recognition</h4><p>LPU continues to strengthen its position among India's top-ranked institutions.</p></div>
+      </div>
+      <div class="h-card">
+        <div class="img">NAAC A++</div>
+        <div class="body"><h4>NAAC A++ Accreditation</h4><p>Consistent quality recognition places LPU among the country's most trusted universities.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="placements" id="placements">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Placements</span>
+      <h2>Explore the Top Global Recruiters Who Choose LPU Talent</h2>
+      <p>LPU offers top placements with packages of up to Rs. 3 Crore, featuring recruiters like Google, Amazon, Microsoft and Adobe, along with career-focused training.</p>
+    </div>
+    <div class="place-stats">
+      <div><strong>2000+</strong><span>Recruiters hired LPU students</span></div>
+      <div><strong>4000+</strong><span>Offers from Fortune 500 companies</span></div>
+      <div><strong>8.5 lakh</strong><span>Average salary — top 25% placed</span></div>
+      <div><strong>300+</strong><span>Recruiters of IITs/IIMs/NITs also hire from LPU</span></div>
+    </div>
+    <div class="logo-row">
+      <div>Google</div><div>Microsoft</div><div>Dell</div><div>Bosch</div><div>Cisco</div>
+      <div>VMware</div><div>Pega</div><div>Intel</div><div>Anywhere</div><div>CompTIA</div>
+    </div>
+  </div>
+</section>
+
+<section class="programmes" id="academics">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Academic Excellence</span>
+      <h2>Diverse Programmes Designed to Inspire Learning, Research &amp; Innovation</h2>
+      <p>From undergraduate to doctoral levels, our programmes equip students with cutting-edge skills, research aptitude and professional readiness.</p>
+    </div>
+    <div class="prog-grid" id="programmes">
+      <div class="prog-card"><span>After 10th Programmes</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>After 12th (Undergraduate) Programmes</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>After Graduation (Post Graduate) Programmes</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>After Post Graduation Programmes</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>Doctoral Programmes (Ph.D.)</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>After Doctoral Programmes</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>After Diploma or Certificate Programmes</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>Short Term Courses</span><span class="arrow">→</span></div>
+      <div class="prog-card"><span>Skill Development Courses</span><span class="arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="visitors" id="campus">
+  <div class="wrap">
+    <div class="sec-head center" style="margin:0 auto 48px;">
+      <span class="eyebrow">Visitors</span>
+      <h2>Esteemed Visitors at LPU</h2>
+    </div>
+    <div class="vis-grid">
+      <div class="vis-card"><div class="vis-avatar"></div><h4>His Holiness</h4><p>The 14th Dalai Lama</p></div>
+      <div class="vis-card"><div class="vis-avatar"></div><h4>Neeraj Chopra</h4><p>Indian Javelin Thrower</p></div>
+      <div class="vis-card"><div class="vis-avatar"></div><h4>Shri Narendra Modi</h4><p>Prime Minister of India</p></div>
+      <div class="vis-card"><div class="vis-avatar"></div><h4>Mr. Hamid Karzai</h4><p>Former President of Afghanistan</p></div>
+      <div class="vis-card"><div class="vis-avatar"></div><h4>Ms. Mary Elizabeth Truss</h4><p>Former PM of United Kingdom</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" id="research">
+  <div class="wrap test-wrap">
+    <div class="test-photo"></div>
+    <div>
+      <span class="eyebrow">Testimonials</span>
+      <h2 style="margin-bottom:24px;">What our Alumni say</h2>
+      <p class="test-quote">"Strong fundamentals and practical learning shaped my growth in technology. The opportunities to apply knowledge through real world projects strengthened my technical and problem-solving skills."</p>
+      <p class="test-name">Sourav Dutta</p>
+      <p class="test-role">Software Engineer II, Microsoft AI · LPU Alumni</p>
+    </div>
+  </div>
+</section>
 
 <footer>
-<h2>🌟 NovaCart X</h2>
-<p>💳 Secure Payment • 🚚 Fast Delivery • ❤️ Trusted by Customers</p>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-addr">
+        <div class="foot-logo">LPU</div>
+        <p>Lovely Professional University<br>Jalandhar–Delhi, G.T. Road, Phagwara,<br>Punjab (India) – 144411.</p>
+        <p>Tel: +91-1824-517000<br>Tel: +91-1824-404404</p>
+      </div>
+      <div>
+        <h5>Admissions</h5>
+        <ul>
+          <li><a href="#">Admissions 2026-27</a></li>
+          <li><a href="#">International Admission</a></li>
+          <li><a href="#">Distance Education</a></li>
+          <li><a href="#">Scholarship &amp; Financial Aid</a></li>
+          <li><a href="#">Download Prospectus</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Academics</h5>
+        <ul>
+          <li><a href="#">Conferences</a></li>
+          <li><a href="#">Joint Placement Drive</a></li>
+          <li><a href="#">Alumni</a></li>
+          <li><a href="#">Entrepreneurship</a></li>
+          <li><a href="#">Top Engineering Colleges</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#">Convocations @LPU</a></li>
+          <li><a href="#">Online Fee Payment</a></li>
+          <li><a href="#">UMS Login</a></li>
+          <li><a href="#">Apply Certificate</a></li>
+          <li><a href="#">eSanad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Others</h5>
+        <ul>
+          <li><a href="#">NISP</a></li>
+          <li><a href="#">UGC Public Self Disclosure</a></li>
+          <li><a href="#">Careers @ LPU</a></li>
+          <li><a href="#">Parent's Login</a></li>
+          <li><a href="#">Tenders</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Copyrights © 2026 All Rights Reserved by Lovely Professional University</span>
+      <div class="socials">
+        <a href="#">f</a><a href="#">x</a><a href="#">in</a><a href="#">ig</a><a href="#">yt</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<script>
-const data=[
-["Laptop","https://cdn-icons-png.flaticon.com/512/179/179386.png",79999],
-["Phone","https://cdn-icons-png.flaticon.com/512/15/15874.png",34999],
-["Watch","https://cdn-icons-png.flaticon.com/512/2920/2920321.png",4999],
-["Shoes","https://cdn-icons-png.flaticon.com/512/2589/2589903.png",2999],
-["Headphones","https://cdn-icons-png.flaticon.com/512/27/27237.png",2499],
-["Camera","https://cdn-icons-png.flaticon.com/512/1042/1042390.png",55999],
-["Keyboard","https://cdn-icons-png.flaticon.com/512/2099/2099192.png",1499],
-["Speaker","https://cdn-icons-png.flaticon.com/512/3659/3659899.png",5999]
-];
-let c=0;
-data.forEach(x=>{
-grid.innerHTML+=`<div class='card'><img src='${x[1]}'><h3>${x[0]}</h3><p>⭐⭐⭐⭐⭐</p><h2>₹${x[2]}</h2><button onclick='cart()'>🛒 Add to Cart</button></div>`;
-});
-function cart(){c++;count.innerText=c;}
-function openLogin(){login.style.display='block';}
-function closeLogin(){login.style.display='none';}
-</script>
+<div class="sticky-actions">
+  <a href="#" class="whatsapp">WhatsApp</a>
+  <a href="#">Apply Now</a>
+</div>
+
 </body>
 </html>
-
