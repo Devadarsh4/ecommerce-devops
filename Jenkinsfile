@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "devadarsh1/ecommerce-app"
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+        IMAGE_NAME = 'devadarsh1/ecommerce-app'
         BUILD_TAG = "${BUILD_NUMBER}"
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -16,68 +17,48 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'dockerhub-credentials',
-                        usernameVariable: 'DOCKER_USER',
-                        passwordVariable: 'DOCKER_PASS'
-                    )
-                ]) {
-                    sh '''
-                        docker build -t $IMAGE_NAME:$BUILD_TAG .
-                        docker tag $IMAGE_NAME:$BUILD_TAG $IMAGE_NAME:latest
-                    '''
+                script {
+                    sh "docker build -t ${IMAGE_NAME}:${BUILD_TAG} ."
+                    sh "docker tag ${IMAGE_NAME}:${BUILD_TAG} ${IMAGE_NAME}:latest"
                 }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'dockerhub-credentials',
-                        usernameVariable: 'DOCKER_USER',
-                        passwordVariable: 'DOCKER_PASS'
-                    )
-                ]) {
-                    sh '''
-                        echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                        docker push $IMAGE_NAME:$BUILD_TAG
-                        docker push $IMAGE_NAME:latest
-                    '''
+                script {
+                    sh "echo \$DOCKERHUB_CREDENTIALS_PSW | docker login -u \$DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                    sh "docker push ${IMAGE_NAME}:${BUILD_TAG}"
+                    sh "docker push ${IMAGE_NAME}:latest"
                 }
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh '''
-                    kubectl set image deployment/ecommerce-deployment ecommerce=$IMAGE_NAME:$BUILD_TAG
-                '''
+                script {
+                    sh "kubectl --kubeconfig=/var/lib/jenkins/.kube/config set image deployment/ecommerce-deployment ecommerce=${IMAGE_NAME}:${BUILD_TAG}"
+                }
             }
         }
 
         stage('Verify Deployment') {
             steps {
-                sh '''
-                    kubectl rollout status deployment/ecommerce-deployment --timeout=120s
-                '''
+                script {
+                    sh "kubectl --kubeconfig=/var/lib/jenkins/.kube/config rollout status deployment/ecommerce-deployment --timeout=60s"
+                }
             }
         }
     }
 
     post {
-        success {
-            echo 'Application deployed successfully.'
-        }
-
         failure {
             echo 'Deployment failed. Rolling back...'
-            sh 'kubectl rollout undo deployment/ecommerce-deployment'
+            sh 'kubectl --kubeconfig=/var/lib/jenkins/.kube/config rollout undo deployment/ecommerce-deployment'
         }
-
         always {
             sh 'docker logout'
         }
     }
 }
+
